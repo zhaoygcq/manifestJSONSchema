@@ -1,0 +1,344 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "object",
+	"properties": {
+		"package": {
+			"type": "string"
+		},
+		"name": {
+			"type": "string"
+		},
+		"versionName": {
+			"type": "string"
+		},
+		"versionCode": {
+			"type": "number"
+		},
+		"minPlatformVersion": {
+			"type": "number",
+			"minimum": 1000,
+			"maximum": 1100
+		},
+		"icon": {
+			"type": "string"
+		},
+		"simulationVersion": {
+			"type": "string",
+			"enum": ["S1-Pro", "default"]
+		},
+		"deviceTypeList": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"enum": ["phone", "watch", "car", "tv-quickapp", "tv-h5"]
+			}
+		},
+		"features": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string",
+						"enum": [
+							"system.app",
+							"system.router",
+							"system.configuration",
+							"system.resident",
+							"system.telecom",
+							"service.exchange",
+							"service.texttoaudio",
+							"service.health",
+							"system.zip",
+							"system.bluetooth",
+							"system.alarm",
+							"service.ad",
+							"system.share",
+							"system.prompt",
+							"system.webview",
+							"system.notification",
+							"system.vibrator",
+							"system.request",
+							"system.requesttask",
+							"system.fetch",
+							"system.websocketfactory",
+							"system.storage",
+							"system.file",
+							"system.barcode",
+							"system.sensor",
+							"system.clipboard",
+							"system.geolocation",
+							"system.shortcut",
+							"system.calendar",
+							"system.network",
+							"system.device",
+							"system.brightness",
+							"system.volume",
+							"system.battery",
+							"system.package",
+							"system.record",
+							"system.contact",
+							"system.sms",
+							"system.wifi",
+							"system.cipher",
+							"system.media",
+							"system.image",
+							"system.audio",
+							"service.push",
+							"service.pay",
+							"service.stats",
+							"service.account",
+							"service.wxpay",
+							"service.alipay",
+							"service.share",
+							"service.qqaccount",
+							"service.wxaccount",
+							"service.wbaccount"
+						]
+					},
+					"params": {
+						"type": "object",
+						"properties": {
+							"url": {
+								"type": "string"
+							},
+							"package": {
+								"type": "string"
+							},
+							"sign": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"required": ["name"]
+			}
+		},
+		"permissions": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"origin": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"config": {
+			"type": "object",
+			"properties": {
+				"logLevel": {
+					"type": "string"
+				},
+				"data": {
+					"type": "object",
+					"properties": {
+						"back": {
+							"type": "string"
+						}
+					}
+				},
+				"background": {
+					"type": "object",
+					"properties": {
+						"features": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"network": {
+					"type": "object",
+					"properties": {
+						"connectTimeout": {
+							"type": "number"
+						},
+						"readTimeout": {
+							"type": "number"
+						},
+						"writeTimeout": {
+							"type": "number"
+						}
+					}
+				}
+			}
+		},
+		"router": {
+			"type": "object",
+			"properties": {
+				"entry": {
+					"type": "string"
+				},
+				"pages": {
+					"type": "object",
+					"patternProperties": {
+						"[a-zA-Z0-9_/]": {
+							"type": "object",
+							"properties": {
+								"component": {
+									"type": "string"
+								},
+								"path": {
+									"type": "string"
+								},
+								"launchMode": {
+									"type": "string",
+									"enum": ["singleTask", "standard"]
+								},
+								"filter": {
+									"type": "object",
+									"patternProperties": {
+										"[a-zA-Z0-9_]": {
+											"type": "object",
+											"properties": {
+												"uri": {
+													"type": "string"
+												}
+											},
+											"required": ["uri"]
+										}
+									}
+								}
+							},
+							"required": ["component"]
+						}
+					}
+				},
+				"widgets": {
+					"type": "object",
+					"properties": {
+						"CardDemo": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"description": {
+									"type": "string"
+								},
+								"component": {
+									"type": "string"
+								},
+								"path": {
+									"type": "string"
+								},
+								"features": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
+				"errorPage": {
+					"type": "string"
+				}
+			},
+			"required": ["entry", "pages"]
+		},
+		"subpackages": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"resource": {
+						"type": "string"
+					}
+				},
+				"required": ["name", "resource"]
+			}
+		},
+		"display": {
+			"type": "object",
+			"properties": {
+				"textSizeAdjust": {
+					"type": "string"
+				},
+				"backgroundColor": {
+					"type": "string"
+				},
+				"titleBar": {
+					"type": "boolean"
+				},
+				"titleBarBackgroundColor": {
+					"type": "string"
+				},
+				"titleBarTextColor": {
+					"type": "string"
+				},
+				"themeMode": {
+					"type": "number"
+				},
+				"pages": {
+					"type": "object",
+					"patternProperties": {
+						"[a-zA-Z0-9_/]": {
+							"type": "object",
+							"properties": {
+								"titleBar": {
+									"type": "boolean"
+								},
+								"statusBarImmersive": {
+									"type": "boolean"
+								},
+								"statusBarTextStyle": {
+									"type": "string"
+								},
+								"statusBarBackgroundColor": {
+									"type": "string"
+								},
+								"menubar": {
+									"type": "object",
+									"properties": {
+										"menuBar": {
+											"type": "boolean"
+										},
+										"menuBarStyle": {
+											"type": "string"
+										},
+										"shareTitle": {
+											"type": "string"
+										},
+										"shareDescription": {
+											"type": "string"
+										},
+										"shareIcon": {
+											"type": "string"
+										},
+										"shareCurrentPage": {
+											"type": "boolean"
+										},
+										"shareUrl": {
+											"type": "string"
+										},
+										"shareParams": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"windowSoftInputMode": {
+					"type": "string"
+				}
+			}
+		},
+		"trustedSslDomains": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		}
+	},
+	"required": ["package", "name", "icon", "versionCode", "config", "router"]
+}
