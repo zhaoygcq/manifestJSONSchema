@@ -18,5 +18,5 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "zhaoygcq-manifest-schema"
+          project: "zhaoygcq-manifest-chema"
           entrypoint: "./main.ts" # TODO: update entrypoint
